@@ -1,0 +1,5 @@
+---
+alwaysApply: true
+---
+
+read summary.md if it exists before doing anything
