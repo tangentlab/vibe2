@@ -18,12 +18,24 @@ This project is a **Next.js portfolio** showcasing interactive web demos built w
 - **Audio Analyzer Demo**
   An audio analysis tool that allows users to upload an audio file. The app analyzes the file's properties (duration, sample rate, channels, dynamic range, etc.), provides feedback and suggestions for improvement, and visualizes the waveform.
 
+- **3D Model with Interactive Hotspots**
+  An experimental demo built with React Three Fiber featuring a procedural 3D futuristic building with interactive hotspots. Users can hover over glowing spheres to see information tooltips and click to select hotspots. The scene includes orbit controls for camera movement, professional lighting, and animated elements.
+
+## User Experience Features
+
+- **Consistent Navigation**: All demo pages include a "Back to Home" button for seamless navigation between demos
+- **Responsive Design**: All demos are optimized for both desktop and mobile interactions
+- **Interactive UI**: Hover effects, tooltips, and visual feedback enhance user engagement
+- **Performance Optimized**: Efficient 3D rendering and cleanup for smooth performance across devices
+
 ## Technologies Used
 
 - **Next.js** (React framework for server-side rendering and routing)
 - **React** (UI library)
 - **Three.js** (3D graphics and visualization)
-- **Tailwind CSS** (for styling, inferred from class names)
+- **React Three Fiber** (@react-three/fiber for declarative 3D scenes)
+- **React Three Drei** (@react-three/drei for 3D utilities and helpers)
+- **Tailwind CSS** (for styling and responsive design)
 - **TypeScript** (type safety and modern JavaScript features)
 
 ## Purpose
