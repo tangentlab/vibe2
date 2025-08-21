@@ -14,6 +14,7 @@ function Hotspot({ position, title, description, onClick }: {
   const meshRef = useRef<THREE.Mesh>(null);
   const [hovered, setHovered] = useState(false);
   const [clicked, setClicked] = useState(false);
+  const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useFrame((state) => {
     if (meshRef.current) {
@@ -21,6 +22,32 @@ function Hotspot({ position, title, description, onClick }: {
       meshRef.current.rotation.z = state.clock.elapsedTime * 2;
     }
   });
+
+  const handlePointerOver = () => {
+    // Clear any existing timeout
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current);
+      hoverTimeoutRef.current = null;
+    }
+    setHovered(true);
+  };
+
+  const handlePointerOut = () => {
+    // Set a delay before hiding the tooltip
+    hoverTimeoutRef.current = setTimeout(() => {
+      setHovered(false);
+      hoverTimeoutRef.current = null;
+    }, 300); // 300ms delay
+  };
+
+  // Cleanup timeout on unmount
+  React.useEffect(() => {
+    return () => {
+      if (hoverTimeoutRef.current) {
+        clearTimeout(hoverTimeoutRef.current);
+      }
+    };
+  }, []);
 
   return (
     <group position={position}>
@@ -31,8 +58,8 @@ function Hotspot({ position, title, description, onClick }: {
           setClicked(!clicked);
           onClick();
         }}
-        onPointerOver={() => setHovered(true)}
-        onPointerOut={() => setHovered(false)}
+        onPointerOver={handlePointerOver}
+        onPointerOut={handlePointerOut}
       >
         <sphereGeometry args={[0.1, 16, 16]} />
         <meshStandardMaterial
@@ -44,7 +71,11 @@ function Hotspot({ position, title, description, onClick }: {
 
       {hovered && (
         <Html distanceFactor={10}>
-          <div className="bg-black bg-opacity-80 text-white p-2 rounded-lg max-w-xs">
+          <div
+            className="bg-black bg-opacity-80 text-white p-2 rounded-lg max-w-xs"
+            onMouseEnter={handlePointerOver}
+            onMouseLeave={handlePointerOut}
+          >
             <h3 className="font-bold text-sm">{title}</h3>
             <p className="text-xs mt-1">{description}</p>
           </div>
