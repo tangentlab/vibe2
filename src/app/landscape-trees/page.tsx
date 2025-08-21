@@ -1,5 +1,6 @@
 "use client";
 import React, { useRef, useEffect, useState } from "react";
+import Link from "next/link";
 import * as THREE from "three";
 
 const LandscapeTrees: React.FC = () => {
@@ -177,6 +178,14 @@ const LandscapeTrees: React.FC = () => {
           readOnly
           style={{ width: 80, height: 40, fontSize: 20, textAlign: 'center', resize: 'none', borderRadius: 4, border: '1px solid #bbb', background: '#f9f9f9' }}
         />
+      </div>
+      <div className="absolute bottom-4 right-4 z-10">
+        <Link
+          href="/"
+          className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded transition-colors duration-200 inline-block"
+        >
+          ← Back to Home
+        </Link>
       </div>
     </>
   );

@@ -26,6 +26,11 @@ export default function Home() {
             Audio Analyzer Demo
           </Link>
         </li>
+        <li>
+          <Link href="/3d-model-hotspots" className="bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 px-4 rounded transition-colors duration-200 inline-block text-center">
+            3D Model with Interactive Hotspots
+          </Link>
+        </li>
 
       </ul>
     </main>

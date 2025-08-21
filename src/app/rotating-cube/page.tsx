@@ -1,5 +1,6 @@
 "use client";
 import React, { useRef, useEffect } from "react";
+import Link from "next/link";
 import * as THREE from "three";
 
 const RotatingCube: React.FC = () => {
@@ -126,5 +127,17 @@ const RotatingCube: React.FC = () => {
 };
 
 export default function Page() {
-  return <RotatingCube />;
+  return (
+    <div className="relative w-full h-full">
+      <RotatingCube />
+      <div className="absolute bottom-4 right-4 z-10">
+        <Link
+          href="/"
+          className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded transition-colors duration-200 inline-block"
+        >
+          ← Back to Home
+        </Link>
+      </div>
+    </div>
+  );
 }

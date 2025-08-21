@@ -1,5 +1,6 @@
 "use client";
 import React, { useRef, useState } from "react";
+import Link from "next/link";
 
 type AudioDetails = {
   name: string;
@@ -95,7 +96,15 @@ export default function AudioAnalyzerPage() {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-8 bg-gray-50" style={{ color: '#000' }}>
+    <main className="flex min-h-screen flex-col items-center justify-center p-8 bg-gray-50 relative" style={{ color: '#000' }}>
+      <div className="absolute top-4 right-4 z-10">
+        <Link
+          href="/"
+          className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded transition-colors duration-200 inline-block"
+        >
+          ← Back to Home
+        </Link>
+      </div>
       <h1 className="text-3xl font-bold mb-6">Audio File Analyzer</h1>
       <input
         ref={fileInputRef}
