@@ -153,7 +153,7 @@ function Loader() {
 
 // Main scene component
 function Scene() {
-  const [_selectedHotspot, setSelectedHotspot] = useState<string | null>(null);
+  const [, setSelectedHotspot] = useState<string | null>(null);
 
   const hotspots = [
     {
