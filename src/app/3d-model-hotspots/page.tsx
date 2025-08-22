@@ -3,6 +3,7 @@ import React, { useRef, useState, Suspense } from "react";
 import { Canvas, useFrame, ThreeElements } from "@react-three/fiber";
 import { OrbitControls, Text, Html, useGLTF, Environment, ContactShadows } from "@react-three/drei";
 import * as THREE from "three";
+import Link from "next/link";
 
 // Hotspot component that appears as interactive points on the 3D model
 function Hotspot({ position, title, description, onClick }: {
@@ -243,12 +244,12 @@ export default function ModelHotspotsPage() {
 
       {/* Back to home button */}
       <div className="absolute bottom-4 right-4 z-10">
-        <a
+        <Link
           href="/"
           className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded transition-colors duration-200"
         >
           ← Back to Home
-        </a>
+        </Link>
       </div>
     </div>
   );
