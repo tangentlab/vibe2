@@ -1,7 +1,7 @@
 "use client";
 import React, { useRef, useState, Suspense } from "react";
-import { Canvas, useFrame, ThreeElements } from "@react-three/fiber";
-import { OrbitControls, Text, Html, useGLTF, Environment, ContactShadows } from "@react-three/drei";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { OrbitControls, Text, Html, Environment, ContactShadows } from "@react-three/drei";
 import * as THREE from "three";
 import Link from "next/link";
 
@@ -153,7 +153,7 @@ function Loader() {
 
 // Main scene component
 function Scene() {
-  const [selectedHotspot, setSelectedHotspot] = useState<string | null>(null);
+  const [_selectedHotspot, setSelectedHotspot] = useState<string | null>(null);
 
   const hotspots = [
     {
@@ -228,7 +228,7 @@ function InfoPanel({ selectedHotspot }: { selectedHotspot: string | null }) {
 
 // Main page component
 export default function ModelHotspotsPage() {
-  const [selectedHotspot, setSelectedHotspot] = useState<string | null>(null);
+  const [selectedHotspot] = useState<string | null>(null);
 
   return (
     <div className="w-screen h-screen relative bg-black">
