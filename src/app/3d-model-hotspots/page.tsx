@@ -4,6 +4,7 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, Text, Html, Environment, ContactShadows } from "@react-three/drei";
 import * as THREE from "three";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 
 // Hotspot component that appears as interactive points on the 3D model
 function Hotspot({ position, title, description, onClick }: {
@@ -227,7 +228,7 @@ function InfoPanel({ selectedHotspot }: { selectedHotspot: string | null }) {
 }
 
 // Main page component
-export default function ModelHotspotsPage() {
+function ModelHotspotsPage() {
   const [selectedHotspot] = useState<string | null>(null);
 
   return (
@@ -254,3 +255,6 @@ export default function ModelHotspotsPage() {
     </div>
   );
 }
+
+// Export with dynamic import to prevent SSR issues
+export default dynamic(() => Promise.resolve(ModelHotspotsPage), { ssr: false });
